@@ -264,6 +264,9 @@ SUMX(BottomProducts, [Product Revenue])
 
 ## 📌 Page 1 — Executive Sales Overview
 
+!<img width="1309" height="738" alt="page1" src="https://github.com/user-attachments/assets/5f7e3b89-e3c8-4c2a-af60-db6b6536f5b1" />
+
+
 **Focus:**
 - Total Revenue  
 - Total Orders  
@@ -281,6 +284,9 @@ SUMX(BottomProducts, [Product Revenue])
 
 ## 📌 Page 2 — Product Performance Analysis
 
+!<img width="1299" height="726" alt="page2" src="https://github.com/user-attachments/assets/5b2ca1da-af5a-4546-ba56-fac847ad3cce" />
+
+
 **Focus:**
 - Top 10 Products by Revenue  
 - Return Rate by Product  
@@ -296,6 +302,10 @@ SUMX(BottomProducts, [Product Revenue])
 ---
 
 ## 📌 Page 3 — Low Performing Products (Root Cause)
+
+!<img width="1283" height="730" alt="page3" src="https://github.com/user-attachments/assets/00dd2595-2c1c-4478-a76b-496ab313ead6" />
+
+
 
 **Focus:**
 - Bottom 10 Products by Revenue  
@@ -335,3 +345,4 @@ SUMX(BottomProducts, [Product Revenue])
 # 📌 Conclusion
 
 This Power BI dashboard provides a structured and strategic analysis of Amazon-style e-commerce data, helping management make informed decisions about revenue growth, product optimization, and operational risk management.
+
