@@ -1,157 +1,196 @@
-📊 Amazon Sales Analytics Dashboard (Power BI)
-🔹 Project Overview
+# 📊 Amazon Sales Analytics Dashboard (Power BI)
 
-This project is a multi-page Power BI dashboard built using Amazon-style e-commerce sales data. The objective of this dashboard is to analyze business performance across revenue, products, and operational risk.
+## 🔹 Project Overview
 
-The dashboard contains 3 main pages:
+This project is a multi-page Power BI dashboard built using Amazon-style e-commerce sales data.  
+The objective of this dashboard is to analyze business performance across revenue, products, and operational risk.
 
-Executive Sales Overview
+The dashboard contains **3 main pages**:
 
-Product Performance Analysis
-
-Low Performing Products – Root Cause & Action
+- Executive Sales Overview  
+- Product Performance Analysis  
+- Low Performing Products – Root Cause & Action  
 
 This project demonstrates strong skills in:
 
-Data Modeling
+- Data Modeling  
+- DAX Measures  
+- Business KPI Design  
+- Root Cause Analysis  
+- Executive Reporting  
 
-DAX Measures
+---
 
-Business KPI Design
-
-Root Cause Analysis
-
-Executive Reporting
-
-📁 Dataset Overview
+# 📁 Dataset Overview
 
 The dataset consists of 9 relational tables:
 
-Table Name	Description
-customers	Customer information
-orders	Order-level data
-order_items	Product-level transaction data
-products	Product details
-category	Product category
-sellers	Seller information
-payments	Payment details
-shipping	Delivery & return data
-inventory	Stock availability
-🏗️ Data Model (Star Schema Design)
+| Table Name  | Description |
+|-------------|------------|
+| customers   | Customer information |
+| orders      | Order-level data |
+| order_items | Product-level transaction data |
+| products    | Product details |
+| category    | Product category |
+| sellers     | Seller information |
+| payments    | Payment details |
+| shipping    | Delivery & return data |
+| inventory   | Stock availability |
 
-The model follows a Star Schema approach.
+---
 
-🔹 Fact Table
+# 🏗️ Data Model (Star Schema Design)
 
-order_items (Core transactional table)
+The model follows a **Star Schema** approach.
 
-🔹 Dimension Tables
+## 🔹 Fact Table
 
-customers
+- `order_items` (Core transactional table)
 
-products
+## 🔹 Dimension Tables
 
-category
+- customers  
+- products  
+- category  
+- sellers  
+- payments  
+- shipping  
+- inventory  
+- DateTable (custom created)
 
-sellers
+---
 
-payments
+## 🔗 Relationships
 
-shipping
-
-inventory
-
-DateTable (custom created)
-
-🔗 Relationships
-From	To	Relationship
-customers[customer_id]	orders[customer_id]	1:M
-orders[order_id]	order_items[order_id]	1:M
-products[product_id]	order_items[product_id]	1:M
-category[category_id]	products[category_id]	1:M
-orders[order_id]	payments[order_id]	1:M
-orders[order_id]	shipping[order_id]	1:M
-products[product_id]	inventory[product_id]	1:M
-DateTable[Date]	orders[order_date]	1:M
+| From | To | Relationship |
+|------|----|-------------|
+| customers[customer_id] | orders[customer_id] | 1:M |
+| orders[order_id] | order_items[order_id] | 1:M |
+| products[product_id] | order_items[product_id] | 1:M |
+| category[category_id] | products[category_id] | 1:M |
+| orders[order_id] | payments[order_id] | 1:M |
+| orders[order_id] | shipping[order_id] | 1:M |
+| products[product_id] | inventory[product_id] | 1:M |
+| DateTable[Date] | orders[order_date] | 1:M |
 
 This ensures proper filter flow from dimensions to fact table.
 
-🛠 Tools Used
+---
 
-Power BI Desktop
+# 🛠 Tools Used
 
-Power Query (M Language)
+- Power BI Desktop  
+- Power Query (M Language)  
+- DAX (Data Analysis Expressions)  
+- GitHub (Project Documentation)  
 
-DAX (Data Analysis Expressions)
+---
 
-GitHub (Project Documentation)
+# ⚙️ Data Preparation Steps
 
-⚙️ Data Preparation Steps
+1. Imported CSV files into Power BI.
+2. Cleaned data in Power Query:
+   - Removed null values
+   - Standardized data types
+   - Created Revenue column
+3. Created a Date Table using DAX.
+4. Built relationships in Model View.
+5. Created calculated columns & measures.
+6. Designed interactive dashboards.
 
-Imported CSV files into Power BI.
+---
 
-Cleaned data in Power Query:
+# 📐 Calculated Columns Created
 
-Removed null values
+## 1️⃣ Revenue (order_items table)
 
-Standardized data types
-
-Created Revenue column
-
-Created a Date Table using DAX.
-
-Built relationships in Model View.
-
-Created calculated columns & measures.
-
-Designed interactive dashboards.
-
-📐 Calculated Columns Created
-1️⃣ Revenue (order_items table)
+```DAX
 Revenue = order_items[quantity] * order_items[price_per_unit]
+```
 
-Purpose:
+**Purpose:**  
 Calculates revenue at transaction level.
 
-2️⃣ Customer Frequency Segment (customers table)
+---
+
+## 2️⃣ Customer Frequency Segment (customers table)
 
 Segments customers based on order count.
 
-3️⃣ Risk Category (products table)
+---
+
+## 3️⃣ Risk Category (products table)
 
 Categorizes products into High Risk / Low Risk based on return rate.
 
-Total Calculated Columns Created: ~3–5 (depending on version)
+**Total Calculated Columns Created:** ~3–5
 
-📊 Measures Created (Core KPIs)
+---
 
-Below are the key measures created in this project.
+# 📊 Measures Created (Core KPIs)
 
-🔹 Revenue Measures
-Total Revenue
+---
+
+## 🔹 Revenue Measures
+
+### Total Revenue
+```DAX
 Total Revenue = SUM(order_items[Revenue])
-Product Revenue
+```
+
+### Product Revenue
+```DAX
 Product Revenue = SUM(order_items[Revenue])
-🔹 Order Measures
-Total Orders
+```
+
+---
+
+## 🔹 Order Measures
+
+### Total Orders
+```DAX
 Total Orders = DISTINCTCOUNT(orders[order_id])
-Units Sold
+```
+
+### Units Sold
+```DAX
 Units Sold = SUM(order_items[quantity])
-🔹 Customer Measures
-Total Customers
+```
+
+---
+
+## 🔹 Customer Measures
+
+### Total Customers
+```DAX
 Total Customers = DISTINCTCOUNT(orders[customer_id])
-🔹 Return Analysis
-Returned Orders
+```
+
+---
+
+## 🔹 Return Analysis
+
+### Returned Orders
+```DAX
 Returned Orders =
 CALCULATE(
     DISTINCTCOUNT(shipping[order_id]),
     NOT(ISBLANK(shipping[return_date]))
 )
-Return Rate %
+```
+
+### Return Rate %
+```DAX
 Return Rate % =
 DIVIDE([Returned Orders], [Total Orders], 0)
-🔹 Payment Risk
-Failed Payment Rate %
+```
+
+---
+
+## 🔹 Payment Risk
+
+### Failed Payment Rate %
+```DAX
 Failed Payment Rate % =
 DIVIDE(
     CALCULATE(
@@ -161,23 +200,37 @@ DIVIDE(
     COUNT(payments[order_id]),
     0
 )
-🔹 Time Intelligence
-Revenue Previous Month
+```
+
+---
+
+## 🔹 Time Intelligence
+
+### Revenue Previous Month
+```DAX
 Revenue PM =
 CALCULATE(
     [Total Revenue],
     DATEADD('DateTable'[Date], -1, MONTH)
 )
-Revenue MoM %
+```
+
+### Revenue MoM %
+```DAX
 Revenue MoM % =
 DIVIDE(
     [Total Revenue] - [Revenue PM],
     [Revenue PM]
 )
-🔹 Bottom 10 Revenue Logic (Advanced DAX)
+```
+
+---
+
+## 🔹 Bottom 10 Revenue Logic (Advanced DAX)
 
 Used for Page 3:
 
+```DAX
 Bottom 10 Total Revenue =
 VAR BottomProducts =
     TOPN(
@@ -191,118 +244,94 @@ VAR BottomProducts =
     )
 RETURN
 SUMX(BottomProducts, [Product Revenue])
+```
 
-Total Measures Created: ~25–35 measures including:
+**Total Measures Created:** ~25–35 measures including:
 
-Revenue KPIs
+- Revenue KPIs  
+- MoM Growth  
+- Return Analysis  
+- Product Risk  
+- Inventory Metrics  
+- Payment Metrics  
+- Bottom 10 Analysis  
 
-MoM Growth
+---
 
-Return Analysis
+# 📄 Dashboard Pages
 
-Product Risk
+---
 
-Inventory Metrics
+## 📌 Page 1 — Executive Sales Overview
 
-Payment Metrics
+**Focus:**
+- Total Revenue  
+- Total Orders  
+- AOV  
+- Total Customers  
+- Monthly Growth  
+- Category Performance  
 
-Bottom 10 Analysis
+**Business Questions Answered:**
+- Is revenue growing?
+- Which category performs best?
+- What is overall business health?
 
-📄 Dashboard Pages
-📌 Page 1 — Executive Sales Overview
+---
 
-Focus:
+## 📌 Page 2 — Product Performance Analysis
 
-Total Revenue
+**Focus:**
+- Top 10 Products by Revenue  
+- Return Rate by Product  
+- Revenue vs Return Risk Scatter  
+- Stock Risk  
+- Monthly Trend (Selected Product)  
 
-Total Orders
+**Business Questions Answered:**
+- Which products drive revenue?
+- Which products have high return rates?
+- Are high revenue products risky?
 
-AOV
+---
 
-Total Customers
+## 📌 Page 3 — Low Performing Products (Root Cause)
 
-Monthly Growth
+**Focus:**
+- Bottom 10 Products by Revenue  
+- Price vs Category Comparison  
+- Return Rate Analysis  
+- Quantity Sold  
+- Action Recommendations  
 
-Category Performance
+**Business Questions Answered:**
+- Why are products underperforming?
+- Is pricing the issue?
+- Is return rate high?
+- Is demand low?
 
-Business Question Answered:
+---
 
-Is revenue growing?
+# 📈 Business Problems Solved
 
-Which category performs best?
+- Revenue concentration risk  
+- Product return risk  
+- Inventory imbalance  
+- Payment failure risk  
+- Identification of low-performing products  
 
-What is overall business health?
+---
 
-📌 Page 2 — Product Performance Analysis
+# 🚀 Key Skills Demonstrated
 
-Focus:
+- Advanced DAX (TOPN, SUMX, CALCULATE, FILTER)
+- Time Intelligence (DATEADD)
+- Dynamic KPI formatting
+- Star schema modeling
+- Executive storytelling with data
 
-Top 10 Products by Revenue
+---
 
-Return Rate by Product
-
-Revenue vs Return Risk Scatter
-
-Stock Risk
-
-Monthly Trend (Selected Product)
-
-Business Question Answered:
-
-Which products drive revenue?
-
-Which products have high return rates?
-
-Are high revenue products risky?
-
-📌 Page 3 — Low Performing Products (Root Cause)
-
-Focus:
-
-Bottom 10 Products by Revenue
-
-Price vs Category Comparison
-
-Return Rate Analysis
-
-Quantity Sold
-
-Action Recommendations
-
-Business Question Answered:
-
-Why are products underperforming?
-
-Is pricing the issue?
-
-Is return rate high?
-
-Is demand low?
-
-📈 Business Problems Solved
-
-Revenue concentration risk
-
-Product return risk
-
-Inventory imbalance
-
-Payment failure risk
-
-Identification of low-performing products
-
-🚀 Key Skills Demonstrated
-
-Advanced DAX (TOPN, SUMX, CALCULATE, FILTER)
-
-Time Intelligence (DATEADD)
-
-Dynamic KPI formatting
-
-Star schema modeling
-
-Executive storytelling with data
-
-📌 Conclusion
+# 📌 Conclusion
 
 This Power BI dashboard provides a structured and strategic analysis of Amazon-style e-commerce data, helping management make informed decisions about revenue growth, product optimization, and operational risk management.
