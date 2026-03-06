@@ -264,8 +264,7 @@ SUMX(BottomProducts, [Product Revenue])
 
 ## 📌 Page 1 — Executive Sales Overview
 
-!<img width="1309" height="738" alt="page1" src="https://github.com/user-attachments/assets/5f7e3b89-e3c8-4c2a-af60-db6b6536f5b1" />
-
+<img width="1192" height="666" alt="page 1" src="https://github.com/user-attachments/assets/0a51f403-f6b3-4415-a159-17060cdbd339" />
 
 **Focus:**
 - Total Revenue  
@@ -284,8 +283,7 @@ SUMX(BottomProducts, [Product Revenue])
 
 ## 📌 Page 2 — Product Performance Analysis
 
-!<img width="1299" height="726" alt="page2" src="https://github.com/user-attachments/assets/5b2ca1da-af5a-4546-ba56-fac847ad3cce" />
-
+<img width="1295" height="736" alt="page 2" src="https://github.com/user-attachments/assets/705cd29b-4e05-48b9-b218-6cec070ce9df" />
 
 **Focus:**
 - Top 10 Products by Revenue  
@@ -303,9 +301,7 @@ SUMX(BottomProducts, [Product Revenue])
 
 ## 📌 Page 3 — Low Performing Products (Root Cause)
 
-!<img width="1283" height="730" alt="page3" src="https://github.com/user-attachments/assets/00dd2595-2c1c-4478-a76b-496ab313ead6" />
-
-
+<img width="1126" height="637" alt="page3" src="https://github.com/user-attachments/assets/4b09ff94-848f-479f-ab62-3216cddc0ef1" />
 
 **Focus:**
 - Bottom 10 Products by Revenue  
@@ -345,4 +341,5 @@ SUMX(BottomProducts, [Product Revenue])
 # 📌 Conclusion
 
 This Power BI dashboard provides a structured and strategic analysis of Amazon-style e-commerce data, helping management make informed decisions about revenue growth, product optimization, and operational risk management.
+
 
